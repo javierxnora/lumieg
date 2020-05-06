@@ -31,12 +31,12 @@ class MoviesSlider extends StatelessWidget {
         .toList();
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: 5),
       child: CarouselSlider(
         options: CarouselOptions(
           autoPlay: true,
           enlargeCenterPage: true,
-          height: _screenSize.height * 0.5,
+          height: _screenSize.height * 0.50,
         ),
         items: imageList,
       ),
