@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lumieg/src/widgets/movies_header_widget.dart';
+import 'package:lumieg/src/widgets/movies_slider_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -11,6 +12,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               MoviesHeader(),
+              MoviesSlider(),
             ],
           ),
         ),
