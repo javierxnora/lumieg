@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:lumieg/src/models/movie_model.dart';
 
 class MoviesSlider extends StatelessWidget {
+  final List<Movie> movies;
+
+  MoviesSlider(this.movies);
+
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
 
-    final List<String> imageListSource = [
-      'https://debutart-static-v1.s3.amazonaws.com/projectitem/5/1/5d055a3f113bf90f1376ddb929459fc8/55715_full-retina.jpg?1551265556',
-      'https://images-na.ssl-images-amazon.com/images/I/91WgnhSHyzL._AC_SL1500_.jpg',
-      'https://i.ebayimg.com/images/g/UC0AAOSwZ6VcVfxV/s-l1600.jpg',
-    ];
-
-    final List<Widget> imageList = imageListSource
+    final List<Widget> imageList = movies
         .map(
           (item) => Container(
-            width: _screenSize.width - (_screenSize.width * 0.20),
+            width: _screenSize.width - (_screenSize.width * 0.23),
             child: ClipRRect(
               borderRadius: BorderRadius.all(
                 Radius.circular(10.0),
               ),
               child: FadeInImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(item),
+                fit: BoxFit.fill,
+                image:
+                    NetworkImage(movies[movies.indexOf(item)].getPosterImg()),
                 placeholder: AssetImage('assets/images/loading.gif'),
               ),
             ),
@@ -37,6 +37,7 @@ class MoviesSlider extends StatelessWidget {
           autoPlay: true,
           enlargeCenterPage: true,
           height: _screenSize.height * 0.50,
+          //aspectRatio: 16 / 9,
         ),
         items: imageList,
       ),

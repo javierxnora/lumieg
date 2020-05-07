@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lumieg/src/widgets/movies_header_widget.dart';
 import 'package:lumieg/src/widgets/movies_slider_widget.dart';
+import 'package:lumieg/src/providers/movies_provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,11 +13,26 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               MoviesHeader(),
-              MoviesSlider(),
+              _getMoviesSlider(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _getMoviesSlider() {
+    MoviesProvider moviesProvider = MoviesProvider();
+    return FutureBuilder(
+      future: moviesProvider.getMoviesNowPlaying(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.hasData) {
+          return MoviesSlider(snapshot.data);
+        } else {
+          return Container(
+              height: 400.0, child: Center(child: CircularProgressIndicator()));
+        }
+      },
     );
   }
 }

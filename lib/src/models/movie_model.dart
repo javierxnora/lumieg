@@ -62,4 +62,8 @@ class Movie {
     overview = json['overview'];
     releaseDate = json['release_date'];
   }
+
+  getPosterImg() {
+    return 'https://image.tmdb.org/t/p/original/$posterPath';
+  }
 }
