@@ -14,7 +14,7 @@ class MoviesSlider extends StatelessWidget {
     final List<Widget> imageList = movies
         .map(
           (item) => Container(
-            width: _screenSize.width - (_screenSize.width * 0.23),
+            width: _screenSize.width - (_screenSize.width * 0.24),
             child: ClipRRect(
               borderRadius: BorderRadius.all(
                 Radius.circular(10.0),
@@ -36,7 +36,7 @@ class MoviesSlider extends StatelessWidget {
         options: CarouselOptions(
           autoPlay: true,
           enlargeCenterPage: true,
-          height: _screenSize.height * 0.50,
+          height: _screenSize.height * 0.51,
           //aspectRatio: 16 / 9,
         ),
         items: imageList,

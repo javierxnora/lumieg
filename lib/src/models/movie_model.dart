@@ -1,18 +1,3 @@
-class Movies {
-  List<Movie> moviesList = new List();
-
-  Movies();
-
-  Movies.fromJsonList(List<dynamic> jsonList) {
-    if (jsonList == null) return;
-
-    for (var item in jsonList) {
-      final movie = new Movie.fromJsonMap(item);
-      moviesList.add(movie);
-    }
-  }
-}
-
 class Movie {
   int voteCount;
   int id;
@@ -61,6 +46,20 @@ class Movie {
     adult = json['adult'];
     overview = json['overview'];
     releaseDate = json['release_date'];
+  }
+
+  List<Movie> getMovies(List<dynamic> jsonList) {
+    List<Movie> moviesList = new List();
+    if (jsonList == null) {
+      moviesList = [];
+    } else {
+      for (var item in jsonList) {
+        final movie = new Movie.fromJsonMap(item);
+        moviesList.add(movie);
+      }
+    }
+
+    return moviesList;
   }
 
   getPosterImg() {
